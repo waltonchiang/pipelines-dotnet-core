@@ -28,7 +28,7 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o website
       - name: Upload Artifact for Build Job
-        uses: actions/upload-artifact@v4.4.3
+        uses: actions/upload-artifact@v4.1.8
         with:
           name: webapp
           path: website/**
@@ -46,7 +46,6 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: "githubaction118"
-          slot-name: "production"
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          app-name: "githubaction118" # from existing azure web app
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} # download publish profile from existing azure web app, upload to repo's secret>action
           package: webapp
