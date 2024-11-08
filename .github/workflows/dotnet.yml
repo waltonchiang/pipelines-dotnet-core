@@ -1,4 +1,4 @@
-# This workflow will build a .NET project
+# This workflow will build a .NET project for Glenn
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
 name: .NET
@@ -26,3 +26,15 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish -c Release -o website
+    - name: Upload Artifact for Build Job
+      uses: actions/upload-artifact@v4.4.3
+      with:
+        name: webapp
+        path: website/**
+        if-no-files-found: warn
+
+
+    
+        
