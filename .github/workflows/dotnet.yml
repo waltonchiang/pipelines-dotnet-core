@@ -47,5 +47,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: "githubaction118" # from existing azure web app
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} # download publish profile from existing azure web app, upload to repo's secret>action
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} # download publish profile from existing azure web app, upload context to repo/settings/secrets/actions/new
           package: webapp
